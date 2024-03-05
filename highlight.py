@@ -1,4 +1,5 @@
 import sys
+import os
 import argparse
 from interpreter import parse_content, tokenize_exp, is_number
 from interpreter import UNOPS, BINOPS, TRINOPS, NOPS
@@ -109,7 +110,7 @@ STANDALONE_WRAPPER = '''
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate a syntax-highlighted HTML file for a StackTo program.')
     parser.add_argument('infile', help='StackTo file to read from')
-    parser.add_argument('-o', '--outfile', help='HTML file to write to', default=['out.html'], required=False, nargs=1)
+    parser.add_argument('-o', '--outfile', help='HTML file to write to', default=[None], required=False, nargs=1)
     parser.add_argument('-s', '--standalone', help='Whether to generate a standalone HTML file as opposed to a fragment', required=False, action='store_true')
     args = parser.parse_args()
     # print(args)
@@ -119,6 +120,8 @@ if __name__ == '__main__':
     print('highlighting', infilename)
     with open(infilename, 'r') as f:
         filecontent = f.read()
+    if outfilename is None:
+        outfilename = 'highlighted_%s.html' % (infilename.split(os.path.sep)[-1])
     infilename = infilename.replace('\\', '/')
     statements = parse_content(filecontent, include_comments=True)
     # print('statements:', statements)
