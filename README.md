@@ -93,9 +93,9 @@ Because of StackTo's simple control flow structure, it's easy to generate a flow
 
 Example:
 
-![FizzBuzz flowchart](flowcharts/flowchart_fizzbuzz.stackto.gv.png)
+![FizzBuzz flowchart](examples/flowcharts/flowchart_fizzbuzz.stackto.gv.png)
 
-You can check out more flowchart examples in [flowcharts](flowcharts).
+You can check out more flowchart examples in [examples/flowcharts](examples/flowcharts).
 
 Flowcharts are made with [generate_flowchart.py](generate_flowchart.py) using the graphviz Python library. 
 
