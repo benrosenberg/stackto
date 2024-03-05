@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>./examples/tests/fizzbuzz.stackto</title>
+  <style>
+pre {
+    font-family: Consolas, monospace;
+}
+
+.kw-set, .kw-output, .kw-if, .kw-goto, .kw-mark {
+    color: rgb(0, 13, 199)
+}
+
+.bracket {
+    color:rgb(0, 0, 0);
+}
+
+.var {
+    color:rgb(0, 0, 0);
+}
+
+.op {
+    color:rgb(0, 136, 9);
+}
+
+.number {
+    color:rgb(0, 201, 184);
+}
+
+.string {
+    color:rgb(180, 57, 0);
+}
+
+.bool {
+    color:rgb(162, 0, 211);
+}
+
+.mark {
+    color:rgb(58, 58, 58);
+    font-weight: bold;
+}
+
+.generated-code {
+    background-color: rgb(240, 240, 240);
+}
+
+.comment {
+    font-style: italic;
+    color:rgb(111, 111, 111);
+}</style>
+</head>
+
+<div class="generated-code">
+<code><pre>
+<span class="kw-set">set</span> <span class="var">$n</span> <span class="bracket">[</span><span class="number">1</span><span class="bracket">]</span>;
+<span class="kw-set">set</span> <span class="var">$max</span> <span class="bracket">[</span><span class="number">100</span><span class="bracket">]</span>;
+<span class="kw-mark">mark</span> <span class="mark">loop_start</span>;
+<span class="kw-set">set</span> <span class="var">$this_output</span> <span class="bracket">[</span><span class="string">""</span><span class="bracket">]</span>;
+<span class="kw-if">if</span> <span class="bracket">[</span><span class="var">$n</span> <span class="number">3</span> <span class="op">%</span> <span class="number">0</span> <span class="op">=</span><span class="bracket">]</span> <span class="kw-if">then</span>
+    <span class="kw-set">set</span> <span class="var">$this_output</span> <span class="bracket">[</span><span class="var">$this_output</span> <span class="string">"Fizz"</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-if">if</span> <span class="bracket">[</span><span class="var">$n</span> <span class="number">5</span> <span class="op">%</span> <span class="number">0</span> <span class="op">=</span><span class="bracket">]</span> <span class="kw-if">then</span>
+    <span class="kw-set">set</span> <span class="var">$this_output</span> <span class="bracket">[</span><span class="var">$this_output</span> <span class="string">"Buzz"</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-if">if</span> <span class="bracket">[</span><span class="var">$this_output</span> <span class="string">""</span> <span class="op">=</span><span class="bracket">]</span> <span class="kw-if">then</span>
+    <span class="kw-set">set</span> <span class="var">$this_output</span> <span class="bracket">[</span><span class="var">$this_output</span> <span class="var">$n</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="var">$this_output</span>;
+<span class="kw-if">if</span> <span class="bracket">[</span><span class="var">$n</span> <span class="var">$max</span> <span class="op">=</span><span class="bracket">]</span> <span class="kw-if">then</span>
+    <span class="kw-goto">goto</span> <span class="mark">loop_end</span>;
+<span class="kw-set">set</span> <span class="var">$n</span> <span class="bracket">[</span><span class="var">$n</span> <span class="number">1</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-goto">goto</span> <span class="mark">loop_start</span>;
+<span class="kw-mark">mark</span> <span class="mark">loop_end</span>;
+</pre></code>
+</div>

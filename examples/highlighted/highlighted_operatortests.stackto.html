@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>./examples/tests/operatortests.stackto</title>
+  <style>
+pre {
+    font-family: Consolas, monospace;
+}
+
+.kw-set, .kw-output, .kw-if, .kw-goto, .kw-mark {
+    color: rgb(0, 13, 199)
+}
+
+.bracket {
+    color:rgb(0, 0, 0);
+}
+
+.var {
+    color:rgb(0, 0, 0);
+}
+
+.op {
+    color:rgb(0, 136, 9);
+}
+
+.number {
+    color:rgb(0, 201, 184);
+}
+
+.string {
+    color:rgb(180, 57, 0);
+}
+
+.bool {
+    color:rgb(162, 0, 211);
+}
+
+.mark {
+    color:rgb(58, 58, 58);
+    font-weight: bold;
+}
+
+.generated-code {
+    background-color: rgb(240, 240, 240);
+}
+
+.comment {
+    font-style: italic;
+    color:rgb(111, 111, 111);
+}</style>
+</head>
+
+<div class="generated-code">
+<code><pre>
+<span class="comment"># goto binops</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'running unops'</span><span class="bracket">]</span>;
+<span class="comment"># UNOP TESTS</span>
+<span class="comment"># '#':{'list'},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'# : '</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="op">#</span> <span class="number">3</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '~':{'number'},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'~ : '</span> <span class="number">1</span> <span class="op">~</span> <span class="number">-1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '!':{'bool'}, </span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'! : '</span> <span class="bool">f</span> <span class="op">!</span> <span class="bool">t</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '?':{'bool', 'number', 'string'},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'? : '</span> <span class="bool">f</span> <span class="op">?</span> <span class="bool">f</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'? : '</span> <span class="number">0</span> <span class="op">?</span> <span class="bool">f</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'? : '</span> <span class="number">1</span> <span class="op">?</span> <span class="bool">t</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'? : '</span> <span class="number">1.5</span> <span class="op">?</span> <span class="bool">t</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'? : '</span> <span class="string">''</span> <span class="op">?</span> <span class="bool">f</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'? : '</span> <span class="string">'a'</span> <span class="op">?</span> <span class="bool">t</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'num':{'bool', 'number', 'string'},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'num : '</span> <span class="string">'1'</span> <span class="op">num</span> <span class="number">1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'num : '</span> <span class="string">'-1'</span> <span class="op">num</span> <span class="number">-1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'num : '</span> <span class="bool">f</span> <span class="op">num</span> <span class="number">0</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'num : '</span> <span class="bool">t</span> <span class="op">num</span> <span class="number">1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'splat':{'list'},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'splat : '</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="op">splat</span> <span class="op">+</span> <span class="op">+</span> <span class="number">6</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'splat : '</span> <span class="number">2.0</span> <span class="number">-4</span> <span class="string">'1'</span> <span class="number">3</span> <span class="op">\</span> <span class="op">splat</span> <span class="op">num</span> <span class="op">+</span> <span class="op">+</span> <span class="number">-1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'splat : '</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">3</span> <span class="op">\</span> <span class="number">2</span> <span class="op">\</span> <span class="op">splat</span> <span class="op">@</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">6</span> <span class="op">\</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'dup':DATA_TYPES,</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'dup : '</span> <span class="number">3</span> <span class="op">dup</span> <span class="op">+</span> <span class="number">6</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'dup : '</span> <span class="string">'3'</span> <span class="op">dup</span> <span class="op">+</span> <span class="string">'33'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'dup : '</span> <span class="bool">false</span> <span class="op">dup</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'drop':DATA_TYPES,</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'drop : '</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="op">drop</span> <span class="op">+</span> <span class="number">3</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'str':DATA_TYPES,</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'str : '</span> <span class="number">1</span> <span class="op">str</span> <span class="string">'1.0'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'str : '</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="op">str</span> <span class="string">'[1.0, 2.0, 3.0]'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'round':{'number'}</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'round : '</span> <span class="number">1</span> <span class="op">round</span> <span class="number">1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'round : '</span> <span class="number">1.5</span> <span class="op">round</span> <span class="number">2</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'round : '</span> <span class="number">-1.1</span> <span class="op">round</span> <span class="number">-1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'sum':{'list'}</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'sum : '</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="op">sum</span> <span class="number">6</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'sum : '</span> <span class="number">1</span> <span class="number">-2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="op">sum</span> <span class="number">2</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'prod':{'list'}</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'prod : '</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="op">prod</span> <span class="number">6</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'prod : '</span> <span class="number">1</span> <span class="number">-2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="op">prod</span> <span class="number">-6</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'type':DATA_TYPES</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'type : '</span> <span class="number">1</span> <span class="op">type</span> <span class="string">'number'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'type : '</span> <span class="number">0</span> <span class="op">\</span> <span class="op">type</span> <span class="string">'list'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'type : '</span> <span class="bool">t</span> <span class="op">type</span> <span class="string">'bool'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'type : '</span> <span class="string">'test'</span> <span class="op">type</span> <span class="string">'string'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># goto end</span>
+<span class="kw-mark">mark</span> <span class="mark">binops</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'running binops'</span><span class="bracket">]</span>;
+<span class="comment"># BINOP TESTS</span>
+<span class="comment"># '<':{('number', 'number')},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'< : '</span> <span class="number">1</span> <span class="number">2</span> <span class="op"><</span> <span class="bool">t</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'< : '</span> <span class="number">2</span> <span class="number">1</span> <span class="op"><</span> <span class="bool">f</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'< : '</span> <span class="number">2</span> <span class="number">2</span> <span class="op"><</span> <span class="bool">f</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '>':{('number', 'number')}, </span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'> : '</span> <span class="number">1</span> <span class="number">2</span> <span class="op">></span> <span class="bool">f</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'> : '</span> <span class="number">2</span> <span class="number">1</span> <span class="op">></span> <span class="bool">t</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'> : '</span> <span class="number">2</span> <span class="number">2</span> <span class="op">></span> <span class="bool">f</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '<=':{('number', 'number')}, </span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'<= : '</span> <span class="number">1</span> <span class="number">2</span> <span class="op"><=</span> <span class="bool">t</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'<= : '</span> <span class="number">2</span> <span class="number">1</span> <span class="op"><=</span> <span class="bool">f</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'<= : '</span> <span class="number">2</span> <span class="number">2</span> <span class="op"><=</span> <span class="bool">t</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '>=':{('number', 'number')}, </span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'>= : '</span> <span class="number">1</span> <span class="number">2</span> <span class="op">>=</span> <span class="bool">f</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'>= : '</span> <span class="number">2</span> <span class="number">1</span> <span class="op">>=</span> <span class="bool">t</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'>= : '</span> <span class="number">2</span> <span class="number">2</span> <span class="op">>=</span> <span class="bool">t</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '=':{p for p in product(DATA_TYPES, DATA_TYPES)},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'= : '</span> <span class="number">2</span> <span class="number">2</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'= : '</span> <span class="number">2</span> <span class="number">1</span> <span class="op">=</span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'= : '</span> <span class="number">2</span> <span class="string">'2'</span> <span class="op">=</span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'= : '</span> <span class="number">2</span> <span class="number">2.0</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '==':{p for p in product(DATA_TYPES, DATA_TYPES)},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'== : '</span> <span class="number">2</span> <span class="number">2</span> <span class="op">==</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'== : '</span> <span class="number">2</span> <span class="number">1</span> <span class="op">==</span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'== : '</span> <span class="number">2</span> <span class="string">'2'</span> <span class="op">==</span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'== : '</span> <span class="number">2</span> <span class="number">2.0</span> <span class="op">==</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '<>':{p for p in product(DATA_TYPES, DATA_TYPES)},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'<> : '</span> <span class="number">2</span> <span class="number">2</span> <span class="op"><></span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'<> : '</span> <span class="number">2</span> <span class="number">1</span> <span class="op"><></span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'<> : '</span> <span class="number">2</span> <span class="string">'2'</span> <span class="op"><></span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'<> : '</span> <span class="number">2</span> <span class="number">2.0</span> <span class="op"><></span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '!=':{p for p in product(DATA_TYPES, DATA_TYPES)},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'!= : '</span> <span class="number">2</span> <span class="number">2</span> <span class="op">!=</span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'!= : '</span> <span class="number">2</span> <span class="number">1</span> <span class="op">!=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'!= : '</span> <span class="number">2</span> <span class="string">'2'</span> <span class="op">!=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'!= : '</span> <span class="number">2</span> <span class="number">2.0</span> <span class="op">!=</span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '&':{('bool', 'bool')},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'& : '</span> <span class="bool">f</span> <span class="bool">f</span> <span class="op">&</span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'& : '</span> <span class="bool">t</span> <span class="bool">f</span> <span class="op">&</span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'& : '</span> <span class="bool">f</span> <span class="bool">t</span> <span class="op">&</span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'& : '</span> <span class="bool">t</span> <span class="bool">t</span> <span class="op">&</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '^':{('bool', 'bool')},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'^ : '</span> <span class="bool">f</span> <span class="bool">f</span> <span class="op">^</span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'^ : '</span> <span class="bool">t</span> <span class="bool">f</span> <span class="op">^</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'^ : '</span> <span class="bool">f</span> <span class="bool">t</span> <span class="op">^</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'^ : '</span> <span class="bool">t</span> <span class="bool">t</span> <span class="op">^</span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '|':{('bool', 'bool')}, </span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'| : '</span> <span class="bool">f</span> <span class="bool">f</span> <span class="op">|</span> <span class="op">!</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'| : '</span> <span class="bool">t</span> <span class="bool">f</span> <span class="op">|</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'| : '</span> <span class="bool">f</span> <span class="bool">t</span> <span class="op">|</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'| : '</span> <span class="bool">t</span> <span class="bool">t</span> <span class="op">|</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '+':{('number', 'number'), ('string', 'string')},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'+ : '</span> <span class="number">1</span> <span class="number">1</span> <span class="op">+</span> <span class="number">2</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'+ : '</span> <span class="number">1</span> <span class="number">-1</span> <span class="op">+</span> <span class="number">0</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'+ : '</span> <span class="string">'1'</span> <span class="string">'-1'</span> <span class="op">+</span> <span class="string">'1-1'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'+ : '</span> <span class="string">'1'</span> <span class="string">''</span> <span class="op">+</span> <span class="string">'1'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '-':{('number', 'number')},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'- : '</span> <span class="number">1</span> <span class="number">1</span> <span class="op">-</span> <span class="number">0</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'- : '</span> <span class="number">1</span> <span class="number">-1</span> <span class="op">-</span> <span class="number">2</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '*':{('number', 'number'), ('string', 'number')},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'* : '</span> <span class="number">1</span> <span class="number">1</span> <span class="op">*</span> <span class="number">1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'* : '</span> <span class="number">1</span> <span class="number">-1</span> <span class="op">*</span> <span class="number">-1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'* : '</span> <span class="number">3</span> <span class="number">4</span> <span class="op">*</span> <span class="number">12</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'* : '</span> <span class="string">'1'</span> <span class="number">4</span> <span class="op">*</span> <span class="string">'1111'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'* : '</span> <span class="string">''</span> <span class="number">4</span> <span class="op">*</span> <span class="string">''</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '/':{('number', 'number')},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'/ : '</span> <span class="number">1</span> <span class="number">2</span> <span class="op">/</span> <span class="number">0.5</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'/ : '</span> <span class="number">2</span> <span class="number">2</span> <span class="op">/</span> <span class="number">1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'/ : '</span> <span class="number">1</span> <span class="number">-2</span> <span class="op">/</span> <span class="number">-0.5</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'/ : '</span> <span class="number">0</span> <span class="number">1</span> <span class="op">/</span> <span class="number">0</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '//':{('number', 'number')}, </span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'// : '</span> <span class="number">1</span> <span class="number">2</span> <span class="op">//</span> <span class="number">0</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'// : '</span> <span class="number">2</span> <span class="number">2</span> <span class="op">//</span> <span class="number">1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'// : '</span> <span class="number">2</span> <span class="number">1</span> <span class="op">//</span> <span class="number">2</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'// : '</span> <span class="number">1</span> <span class="number">-2</span> <span class="op">//</span> <span class="number">-1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'// : '</span> <span class="number">0</span> <span class="number">1</span> <span class="op">//</span> <span class="number">0</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '%':{('number', 'number')},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'% : '</span> <span class="number">5</span> <span class="number">1</span> <span class="op">%</span> <span class="number">0</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'% : '</span> <span class="number">5</span> <span class="number">2</span> <span class="op">%</span> <span class="number">1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'% : '</span> <span class="number">1</span> <span class="number">3</span> <span class="op">%</span> <span class="number">1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># '@':{('list', 'list')}, </span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'@ : '</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">3</span> <span class="op">\</span> <span class="op">@</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">6</span> <span class="op">\</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'@ : '</span> <span class="number">0</span> <span class="op">\</span> <span class="number">0</span> <span class="op">\</span> <span class="op">@</span> <span class="number">0</span> <span class="op">\</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'@ : '</span> <span class="number">0</span> <span class="op">\</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">3</span> <span class="op">\</span> <span class="op">@</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">3</span> <span class="op">\</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># ':':{p for p in product(['list'], DATA_TYPES)},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">': : '</span> <span class="number">0</span> <span class="op">\</span> <span class="number">1</span> <span class="op">:</span> <span class="number">1</span> <span class="number">1</span> <span class="op">\</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">': : '</span> <span class="number">0</span> <span class="op">\</span> <span class="number">0</span> <span class="op">\</span> <span class="op">:</span> <span class="op">splat</span> <span class="op">#</span> <span class="number">0</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'swap':{p for p in product(DATA_TYPES, DATA_TYPES)},</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'swap : '</span> <span class="number">1</span> <span class="number">2</span> <span class="op">swap</span> <span class="op">-</span> <span class="number">1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'swap : '</span> <span class="string">'a'</span> <span class="string">'b'</span> <span class="op">swap</span> <span class="op">+</span> <span class="string">'ba'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'nth':{('list', 'number')}</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'nth : '</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="number">2</span> <span class="op">nth</span> <span class="number">3</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'nth : '</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="number">0</span> <span class="op">nth</span> <span class="number">1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'min':{('number', 'number')}</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'min : '</span> <span class="number">1</span> <span class="number">2</span> <span class="op">min</span> <span class="number">1</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'max':{('number', 'number')}</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'max : '</span> <span class="number">1</span> <span class="number">2</span> <span class="op">max</span> <span class="number">2</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'split':{('string', 'string')}</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'split : '</span> <span class="string">'test'</span> <span class="string">'t'</span> <span class="op">split</span> <span class="string">''</span> <span class="string">'es'</span> <span class="string">''</span> <span class="number">3</span> <span class="op">\</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'split : '</span> <span class="string">'a b c d e f'</span> <span class="string">' '</span> <span class="op">split</span> <span class="string">'a'</span> <span class="string">'b'</span> <span class="string">'c'</span> <span class="string">'d'</span> <span class="string">'e'</span> <span class="string">'f'</span> <span class="number">6</span> <span class="op">\</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># goto end</span>
+<span class="comment"># TRINOP TESTS (none for now)</span>
+<span class="kw-mark">mark</span> <span class="mark">nops</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'running nops'</span><span class="bracket">]</span>;
+<span class="comment"># NOP TESTS</span>
+<span class="comment"># '\\'</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'\ : '</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="op">str</span> <span class="string">'[1.0, 2.0, 3.0]'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'\ : '</span> <span class="number">0</span> <span class="op">\</span> <span class="op">str</span> <span class="string">'[]'</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'dropn'</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'dropn : '</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">2</span> <span class="op">dropn</span> <span class="number">3</span> <span class="op">\</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="op">\</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'top'</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="op">top</span> <span class="string">'top : '</span> <span class="op">swap</span> <span class="number">5</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'topn'</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">2</span> <span class="op">topn</span> <span class="op">+</span> <span class="string">'topn : '</span> <span class="op">swap</span> <span class="number">9</span> <span class="op">=</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="comment"># 'rand'</span>
+<span class="kw-output">output</span> <span class="bracket">[</span><span class="string">'rand : '</span> <span class="op">rand</span> <span class="op">dup</span> <span class="number">0</span> <span class="op">></span> <span class="op">swap</span> <span class="number">1</span> <span class="op"><</span> <span class="op">&</span> <span class="op">str</span> <span class="op">+</span><span class="bracket">]</span>;
+<span class="kw-mark">mark</span> <span class="mark">end</span>;
+</pre></code>
+</div>
