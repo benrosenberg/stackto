@@ -27,6 +27,7 @@
  - [ ] actual jupyter-like notebook support
  - [ ] "set" datatype
  - [ ] record/dict datatype
+ - [ ] dark theme css for syntax highlighting
  - [ ] ide support (lsp)
  - [ ] data structure libraries or keywords
  - [ ] graphviz integration
