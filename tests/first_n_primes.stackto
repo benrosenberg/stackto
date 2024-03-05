@@ -1,0 +1,42 @@
+output ["Enter a number of primes to generate:"];
+set $n input;
+set $n [$n num];
+output ["Generating a list of the first " $n str + " primes..." +];
+
+set $i [2];
+set $prime_list [0 \];
+
+mark loop_start;
+
+# determine whether $i is prime
+set $j [2];
+mark inner_loop_start;
+set $is_prime [true];
+if [$j $i 2 / >] then
+    goto inner_loop_end;
+set $rem_zero [$i $j % 0 = !];
+if [$rem_zero] then
+    set $j [$j 1 +];
+if [$rem_zero !] then
+    set $is_prime [false];
+if [$rem_zero !] then
+    goto inner_loop_end;
+goto inner_loop_start;
+mark inner_loop_end;
+
+if [$is_prime] then
+    output ["Found prime: " $i str +];
+
+# $is_prime is true if $i is prime and false otherwise
+if [$is_prime] then
+    set $prime_list [$prime_list $i :];
+
+if [$prime_list # $n =] then
+    goto loop_end;
+
+set $i [$i 1 +];
+
+goto loop_start;
+mark loop_end;
+
+output ["First " $n str " primes: " $prime_list str + + +];

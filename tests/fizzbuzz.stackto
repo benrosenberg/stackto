@@ -1,0 +1,16 @@
+set $n [1];
+set $max [100];
+mark loop_start;
+set $this_output [""];
+if [$n 3 % 0 =] then
+    set $this_output [$this_output "Fizz" +];
+if [$n 5 % 0 =] then
+    set $this_output [$this_output "Buzz" +];
+if [$this_output "" =] then
+    set $this_output [$this_output $n str +];
+output $this_output;
+if [$n $max =] then
+    goto loop_end;
+set $n [$n 1 +];
+goto loop_start;
+mark loop_end;

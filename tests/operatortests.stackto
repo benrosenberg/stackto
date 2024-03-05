@@ -1,0 +1,182 @@
+# goto binops;
+
+output ['running unops'];
+
+# UNOP TESTS
+# '#':{'list'},
+output ['# : ' 1 2 3 3 \ # 3 = str +];
+# '~':{'number'},
+output ['~ : ' 1 ~ -1 = str +];
+# '!':{'bool'}, 
+output ['! : ' f ! t = str +];
+# '?':{'bool', 'number', 'string'},
+output ['? : ' f ? f = str +];
+output ['? : ' 0 ? f = str +];
+output ['? : ' 1 ? t = str +];
+output ['? : ' 1.5 ? t = str +];
+output ['? : ' '' ? f = str +];
+output ['? : ' 'a' ? t = str +];
+# 'num':{'bool', 'number', 'string'},
+output ['num : ' '1' num 1 = str +];
+output ['num : ' '-1' num -1 = str +];
+output ['num : ' f num 0 = str +];
+output ['num : ' t num 1 = str +];
+# 'splat':{'list'},
+output ['splat : ' 1 2 3 3 \ splat + + 6 = str +];
+output ['splat : ' 2.0 -4 '1' 3 \ splat num + + -1 = str +];
+output ['splat : ' 1 2 3 3 \ 4 5 6 3 \ 2 \ splat @ 1 2 3 4 5 6 6 \ = str +];
+# 'dup':DATA_TYPES,
+output ['dup : ' 3 dup + 6 = str +];
+output ['dup : ' '3' dup + '33' = str +];
+output ['dup : ' false dup = str +];
+# 'drop':DATA_TYPES,
+output ['drop : ' 1 2 3 drop + 3 = str +];
+# 'str':DATA_TYPES,
+output ['str : ' 1 str '1.0' = str +];
+output ['str : ' 1 2 3 3 \ str '[1.0, 2.0, 3.0]' = str +];
+# 'round':{'number'}
+output ['round : ' 1 round 1 = str +];
+output ['round : ' 1.5 round 2 = str +];
+output ['round : ' -1.1 round -1 = str +];
+# 'sum':{'list'}
+output ['sum : ' 1 2 3 3 \ sum 6 = str + ];
+output ['sum : ' 1 -2 3 3 \ sum 2 = str + ];
+# 'prod':{'list'}
+output ['prod : ' 1 2 3 3 \ prod 6 = str + ];
+output ['prod : ' 1 -2 3 3 \ prod -6 = str + ];
+# 'type':DATA_TYPES
+output ['type : ' 1 type 'number' = str +];
+output ['type : ' 0 \ type 'list' = str +];
+output ['type : ' t type 'bool' = str +];
+output ['type : ' 'test' type 'string' = str +];
+
+# goto end;
+
+mark binops;
+
+output ['running binops'];
+
+# BINOP TESTS
+# '<':{('number', 'number')},
+output ['< : ' 1 2 < t = str +];
+output ['< : ' 2 1 < f = str +];
+output ['< : ' 2 2 < f = str +];
+# '>':{('number', 'number')}, 
+output ['> : ' 1 2 > f = str +];
+output ['> : ' 2 1 > t = str +];
+output ['> : ' 2 2 > f = str +];
+# '<=':{('number', 'number')}, 
+output ['<= : ' 1 2 <= t = str +];
+output ['<= : ' 2 1 <= f = str +];
+output ['<= : ' 2 2 <= t = str +];
+# '>=':{('number', 'number')}, 
+output ['>= : ' 1 2 >= f = str +];
+output ['>= : ' 2 1 >= t = str +];
+output ['>= : ' 2 2 >= t = str +];
+# '=':{p for p in product(DATA_TYPES, DATA_TYPES)},
+output ['= : ' 2 2 = str +];
+output ['= : ' 2 1 = ! str +];
+output ['= : ' 2 '2' = ! str +];
+output ['= : ' 2 2.0 = str +];
+# '==':{p for p in product(DATA_TYPES, DATA_TYPES)},
+output ['== : ' 2 2 == str +];
+output ['== : ' 2 1 == ! str +];
+output ['== : ' 2 '2' == ! str +];
+output ['== : ' 2 2.0 == str +];
+# '<>':{p for p in product(DATA_TYPES, DATA_TYPES)},
+output ['<> : ' 2 2 <> ! str +];
+output ['<> : ' 2 1 <> str +];
+output ['<> : ' 2 '2' <> str +];
+output ['<> : ' 2 2.0 <> ! str +];
+# '!=':{p for p in product(DATA_TYPES, DATA_TYPES)},
+output ['!= : ' 2 2 != ! str +];
+output ['!= : ' 2 1 !=  str +];
+output ['!= : ' 2 '2' !=  str +];
+output ['!= : ' 2 2.0 != ! str +];
+# '&':{('bool', 'bool')},
+output ['& : ' f f & ! str +];
+output ['& : ' t f & ! str +];
+output ['& : ' f t & ! str +];
+output ['& : ' t t & str +];
+# '^':{('bool', 'bool')},
+output ['^ : ' f f ^ ! str +];
+output ['^ : ' t f ^ str +];
+output ['^ : ' f t ^ str +];
+output ['^ : ' t t ^ ! str +];
+# '|':{('bool', 'bool')}, 
+output ['| : ' f f | ! str +];
+output ['| : ' t f | str +];
+output ['| : ' f t | str +];
+output ['| : ' t t | str +];
+# '+':{('number', 'number'), ('string', 'string')},
+output ['+ : ' 1 1 + 2 = str +]; 
+output ['+ : ' 1 -1 + 0 = str +];
+output ['+ : ' '1' '-1' + '1-1' = str +];
+output ['+ : ' '1' '' + '1' = str +];
+# '-':{('number', 'number')},
+output ['- : ' 1 1 - 0 = str +]; 
+output ['- : ' 1 -1 - 2 = str +];
+# '*':{('number', 'number'), ('string', 'number')},
+output ['* : ' 1 1 * 1 = str +]; 
+output ['* : ' 1 -1 * -1 = str +];
+output ['* : ' 3 4 * 12 = str +];
+output ['* : ' '1' 4 * '1111' = str +];
+output ['* : ' '' 4 * '' = str +];
+# '/':{('number', 'number')},
+output ['/ : ' 1 2 / 0.5 = str +];
+output ['/ : ' 2 2 / 1 = str +];
+output ['/ : ' 1 -2 / -0.5 = str +];
+output ['/ : ' 0 1 / 0 = str +];
+# '//':{('number', 'number')}, 
+output ['// : ' 1 2 // 0 = str +];
+output ['// : ' 2 2 // 1 = str +];
+output ['// : ' 2 1 // 2 = str +];
+output ['// : ' 1 -2 // -1 = str +];
+output ['// : ' 0 1 // 0 = str +];
+# '%':{('number', 'number')},
+output ['% : ' 5 1 % 0 = str +]; 
+output ['% : ' 5 2 % 1 = str +]; 
+output ['% : ' 1 3 % 1 = str +]; 
+# '@':{('list', 'list')}, 
+output ['@ : ' 1 2 3 3 \ 4 5 6 3 \ @ 1 2 3 4 5 6 6 \ = str +];
+output ['@ : ' 0 \ 0 \ @ 0 \ = str +];
+output ['@ : ' 0 \ 4 5 6 3 \ @ 4 5 6 3 \ = str +];
+# ':':{p for p in product(['list'], DATA_TYPES)},
+output [': : ' 0 \ 1 : 1 1 \ = str + ];
+output [': : ' 0 \ 0 \ : splat # 0 = str + ];
+# 'swap':{p for p in product(DATA_TYPES, DATA_TYPES)},
+output ['swap : ' 1 2 swap - 1 = str +];
+output ['swap : ' 'a' 'b' swap + 'ba' = str +];
+# 'nth':{('list', 'number')}
+output ['nth : ' 1 2 3 3 \ 2 nth 3 = str +];
+output ['nth : ' 1 2 3 3 \ 0 nth 1 = str +];
+# 'min':{('number', 'number')}
+output ['min : ' 1 2 min 1 = str +];
+# 'max':{('number', 'number')}
+output ['max : ' 1 2 max 2 = str +];
+# 'split':{('string', 'string')}
+output ['split : ' 'test' 't' split '' 'es' '' 3 \ = str +];
+output ['split : ' 'a b c d e f' ' ' split 'a' 'b' 'c' 'd' 'e' 'f' 6 \ = str +];
+
+# goto end;
+
+# TRINOP TESTS (none for now)
+
+mark nops;
+
+output ['running nops'];
+
+# NOP TESTS
+# '\\'
+output ['\ : ' 1 2 3 3 \ str '[1.0, 2.0, 3.0]' = str +];
+output ['\ : ' 0 \ str '[]' = str +];
+# 'dropn'
+output ['dropn : ' 1 2 3 4 5 2 dropn 3 \ 1 2 3 3 \ = str +];
+# 'top'
+output [1 2 3 4 5 top 'top : ' swap 5 = str +];
+# 'topn'
+output [1 2 3 4 5 2 topn + 'topn : ' swap 9 = str +];
+# 'rand'
+output ['rand : ' rand dup 0 > swap 1 < & str +];
+
+mark end;

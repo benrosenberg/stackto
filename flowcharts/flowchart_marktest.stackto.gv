@@ -1,0 +1,52 @@
+digraph "flowchart of tests\\marktest.stackto" {
+	label="flowchart of tests\\marktest.stackto"
+	labelloc=t
+	fontsize=28
+	fontname=Arial
+	node [fontname=Consolas]
+	edge [fontname=Consolas]
+	node [shape=tab]
+	"('mark', 'a')"
+	node [shape=oval]
+	node [shape=tab]
+	"('mark', 'b')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'flag', '[f]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'count', '[5]')"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$flag]', ('goto', 'b'))"
+	node [shape=oval]
+	"('if', '[$flag]', ('goto', 'b'))" -> "('mark', 'b')" [label=True]
+	node [shape=box3d]
+	"('set', 'count', '[$count        1 -]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'flag', '[$count 0 =]')"
+	node [shape=oval]
+	node [shape=note]
+	"('outputvar', 'count')"
+	node [shape=oval]
+	node [shape=oval]
+	"('goto', 'a')"
+	"('goto', 'a')" -> "('mark', 'a')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'done_text', '[\"done!\"]')"
+	node [shape=oval]
+	node [shape=note]
+	"('outputvar', 'done_text')"
+	node [shape=oval]
+	"('set', 'flag', '[f]')" -> "('set', 'count', '[5]')"
+	"('set', 'count', '[5]')" -> "('mark', 'a')"
+	"('mark', 'a')" -> "('if', '[$flag]', ('goto', 'b'))"
+	"('if', '[$flag]', ('goto', 'b'))" -> "('set', 'count', '[$count        1 -]')" [label=False]
+	"('set', 'count', '[$count        1 -]')" -> "('set', 'flag', '[$count 0 =]')"
+	"('set', 'flag', '[$count 0 =]')" -> "('outputvar', 'count')"
+	"('outputvar', 'count')" -> "('goto', 'a')"
+	"('mark', 'b')" -> "('set', 'done_text', '[\"done!\"]')"
+	"('set', 'done_text', '[\"done!\"]')" -> "('outputvar', 'done_text')"
+}

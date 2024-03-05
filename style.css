@@ -1,0 +1,46 @@
+
+pre {
+    font-family: Consolas, monospace;
+}
+
+.kw-set, .kw-output, .kw-if, .kw-goto, .kw-mark {
+    color: rgb(0, 13, 199)
+}
+
+.bracket {
+    color:rgb(0, 0, 0);
+}
+
+.var {
+    color:rgb(0, 0, 0);
+}
+
+.op {
+    color:rgb(0, 136, 9);
+}
+
+.number {
+    color:rgb(0, 201, 184);
+}
+
+.string {
+    color:rgb(180, 57, 0);
+}
+
+.bool {
+    color:rgb(162, 0, 211);
+}
+
+.mark {
+    color:rgb(58, 58, 58);
+    font-weight: bold;
+}
+
+.generated-code {
+    background-color: rgb(240, 240, 240);
+}
+
+.comment {
+    font-style: italic;
+    color:rgb(111, 111, 111);
+}

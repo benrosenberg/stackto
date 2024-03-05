@@ -1,0 +1,19 @@
+set $n input;
+set $n [$n num];
+# test comment
+
+#another test comment
+
+
+set $n_odd [$n 2 %];
+
+output $n_odd;
+
+set $oddout ["odd!"];
+set $evenout ["even!"];
+
+if [$n_odd ?] then output $oddout;
+
+if [$n_odd ? !] then output $evenout;
+
+output input;

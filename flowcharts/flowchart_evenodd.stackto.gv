@@ -1,0 +1,43 @@
+digraph "flowchart of .\\tests\\evenodd.stackto" {
+	label="flowchart of .\\tests\\evenodd.stackto"
+	labelloc=t
+	fontsize=28
+	fontname=Arial
+	node [fontname=Consolas]
+	edge [fontname=Consolas]
+	node [shape=box3d]
+	"('set', 'n', 'input')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'n', '[$n num]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'n_odd', '[$n 2 %]')"
+	node [shape=oval]
+	node [shape=note]
+	"('outputvar', 'n_odd')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'oddout', '[\"odd!\"]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'evenout', '[\"even!\"]')"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$n_odd ?]', ('outputvar', 'oddout'))"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$n_odd ? !]', ('outputvar', 'evenout'))"
+	node [shape=oval]
+	node [shape=note]
+	"('outputexp', 'input')"
+	node [shape=oval]
+	"('set', 'n', 'input')" -> "('set', 'n', '[$n num]')"
+	"('set', 'n', '[$n num]')" -> "('set', 'n_odd', '[$n 2 %]')"
+	"('set', 'n_odd', '[$n 2 %]')" -> "('outputvar', 'n_odd')"
+	"('outputvar', 'n_odd')" -> "('set', 'oddout', '[\"odd!\"]')"
+	"('set', 'oddout', '[\"odd!\"]')" -> "('set', 'evenout', '[\"even!\"]')"
+	"('set', 'evenout', '[\"even!\"]')" -> "('if', '[$n_odd ?]', ('outputvar', 'oddout'))"
+	"('if', '[$n_odd ?]', ('outputvar', 'oddout'))" -> "('if', '[$n_odd ? !]', ('outputvar', 'evenout'))"
+	"('if', '[$n_odd ? !]', ('outputvar', 'evenout'))" -> "('outputexp', 'input')"
+}

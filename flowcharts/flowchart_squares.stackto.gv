@@ -1,0 +1,101 @@
+digraph "flowchart of .\\tests\\squares.stackto" {
+	label="flowchart of .\\tests\\squares.stackto"
+	labelloc=t
+	fontsize=28
+	fontname=Arial
+	node [fontname=Consolas]
+	edge [fontname=Consolas]
+	node [shape=tab]
+	"('mark', 'loop_start')"
+	node [shape=oval]
+	node [shape=tab]
+	"('mark', 'loop_end')"
+	node [shape=oval]
+	node [shape=tab]
+	"('mark', 'loop2_start')"
+	node [shape=oval]
+	node [shape=tab]
+	"('mark', 'loop2_end')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'n', 'input')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'n', '[$n num]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'squares', '[0 \\]')"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$squares # $n =]', ('goto', 'loop_end'))"
+	node [shape=oval]
+	"('if', '[$squares # $n =]', ('goto', 'loop_end'))" -> "('mark', 'loop_end')" [label=True]
+	node [shape=box3d]
+	"('set', 'squares', '[$squares dup # dup * COLON]')"
+	node [shape=oval]
+	node [shape=note]
+	"('outputexp', '[\"square indexCOLON \" $squares # str +]')"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$squares # 2 % ?]', ('outputexp', '[\"even square found at index \" \n                $squares # str + \" COLON \" + \n                $squares dup # 1 - nth str +]'))"
+	node [shape=oval]
+	node [shape=oval]
+	"('goto', 'loop_start')"
+	"('goto', 'loop_start')" -> "('mark', 'loop_start')"
+	node [shape=oval]
+	node [shape=note]
+	"('outputexp', '[$squares]')"
+	node [shape=oval]
+	node [shape=note]
+	"('outputexp', '[\"squares listCOLON \" $squares str +]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'total', '[0]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'index', '[0]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'lensquares', '[$squares #]')"
+	node [shape=oval]
+	node [shape=note]
+	"('outputvar', 'lensquares')"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$index $squares # ==]', ('goto', 'loop2_end'))"
+	node [shape=oval]
+	"('if', '[$index $squares # ==]', ('goto', 'loop2_end'))" -> "('mark', 'loop2_end')" [label=True]
+	node [shape=box3d]
+	"('set', 'total', '[$total $squares $index nth +]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'index', '[$index 1 +]')"
+	node [shape=oval]
+	node [shape=oval]
+	"('goto', 'loop2_start')"
+	"('goto', 'loop2_start')" -> "('mark', 'loop2_start')"
+	node [shape=oval]
+	node [shape=note]
+	"('outputexp', '[\"totalCOLON \" $total str +]')"
+	node [shape=oval]
+	"('set', 'n', 'input')" -> "('set', 'n', '[$n num]')"
+	"('set', 'n', '[$n num]')" -> "('set', 'squares', '[0 \\]')"
+	"('set', 'squares', '[0 \\]')" -> "('mark', 'loop_start')"
+	"('mark', 'loop_start')" -> "('if', '[$squares # $n =]', ('goto', 'loop_end'))"
+	"('if', '[$squares # $n =]', ('goto', 'loop_end'))" -> "('set', 'squares', '[$squares dup # dup * COLON]')" [label=False]
+	"('set', 'squares', '[$squares dup # dup * COLON]')" -> "('outputexp', '[\"square indexCOLON \" $squares # str +]')"
+	"('outputexp', '[\"square indexCOLON \" $squares # str +]')" -> "('if', '[$squares # 2 % ?]', ('outputexp', '[\"even square found at index \" \n                $squares # str + \" COLON \" + \n                $squares dup # 1 - nth str +]'))"
+	"('if', '[$squares # 2 % ?]', ('outputexp', '[\"even square found at index \" \n                $squares # str + \" COLON \" + \n                $squares dup # 1 - nth str +]'))" -> "('goto', 'loop_start')"
+	"('mark', 'loop_end')" -> "('outputexp', '[$squares]')"
+	"('outputexp', '[$squares]')" -> "('outputexp', '[\"squares listCOLON \" $squares str +]')"
+	"('outputexp', '[\"squares listCOLON \" $squares str +]')" -> "('set', 'total', '[0]')"
+	"('set', 'total', '[0]')" -> "('set', 'index', '[0]')"
+	"('set', 'index', '[0]')" -> "('set', 'lensquares', '[$squares #]')"
+	"('set', 'lensquares', '[$squares #]')" -> "('outputvar', 'lensquares')"
+	"('outputvar', 'lensquares')" -> "('mark', 'loop2_start')"
+	"('mark', 'loop2_start')" -> "('if', '[$index $squares # ==]', ('goto', 'loop2_end'))"
+	"('if', '[$index $squares # ==]', ('goto', 'loop2_end'))" -> "('set', 'total', '[$total $squares $index nth +]')" [label=False]
+	"('set', 'total', '[$total $squares $index nth +]')" -> "('set', 'index', '[$index 1 +]')"
+	"('set', 'index', '[$index 1 +]')" -> "('goto', 'loop2_start')"
+	"('mark', 'loop2_end')" -> "('outputexp', '[\"totalCOLON \" $total str +]')"
+}

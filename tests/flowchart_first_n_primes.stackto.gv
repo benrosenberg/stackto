@@ -1,0 +1,106 @@
+digraph "flowchart of .\\tests\\first_n_primes.stackto" {
+	label="flowchart of .\\tests\\first_n_primes.stackto"
+	labelloc=t
+	fontsize=28
+	fontname=Arial
+	node [fontname=Consolas]
+	edge [fontname=Consolas]
+	node [shape=tab]
+	"('mark', 'loop_start')"
+	node [shape=oval]
+	node [shape=tab]
+	"('mark', 'inner_loop_start')"
+	node [shape=oval]
+	node [shape=tab]
+	"('mark', 'inner_loop_end')"
+	node [shape=oval]
+	node [shape=tab]
+	"('mark', 'loop_end')"
+	node [shape=oval]
+	node [shape=note]
+	"('outputexp', '[\"Enter a number of primes to generate..\"]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'n', 'input')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'n', '[$n num]')"
+	node [shape=oval]
+	node [shape=note]
+	"('outputexp', '[\"Generating a list of the first \" $n str + \" primes...\" +]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'i', '[2]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'prime_list', '[0 \\]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'j', '[2]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'is_prime', '[true]')"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$j $i 2 / >]', ('goto', 'inner_loop_end'))"
+	node [shape=oval]
+	"('if', '[$j $i 2 / >]', ('goto', 'inner_loop_end'))" -> "('mark', 'inner_loop_end')" [label=True]
+	node [shape=box3d]
+	"('set', 'rem_zero', '[$i $j % 0 = !]')"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$rem_zero]', ('set', 'j', '[$j 1 +]'))"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$rem_zero !]', ('set', 'is_prime', '[false]'))"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$rem_zero !]', ('goto', 'inner_loop_end'))"
+	node [shape=oval]
+	"('if', '[$rem_zero !]', ('goto', 'inner_loop_end'))" -> "('mark', 'inner_loop_end')" [label=True]
+	node [shape=oval]
+	"('goto', 'inner_loop_start')"
+	"('goto', 'inner_loop_start')" -> "('mark', 'inner_loop_start')"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$is_prime]', ('outputexp', '[\"Found prime.. \" $i str +]'))"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$is_prime]', ('set', 'prime_list', '[$prime_list $i ..]'))"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$prime_list # $n =]', ('goto', 'loop_end'))"
+	node [shape=oval]
+	"('if', '[$prime_list # $n =]', ('goto', 'loop_end'))" -> "('mark', 'loop_end')" [label=True]
+	node [shape=box3d]
+	"('set', 'i', '[$i 1 +]')"
+	node [shape=oval]
+	node [shape=oval]
+	"('goto', 'loop_start')"
+	"('goto', 'loop_start')" -> "('mark', 'loop_start')"
+	node [shape=oval]
+	node [shape=note]
+	"('outputexp', '[\"First \" $n str \" primes.. \" $prime_list str + + +]')"
+	node [shape=oval]
+	"('outputexp', '[\"Enter a number of primes to generate..\"]')" -> "('set', 'n', 'input')"
+	"('set', 'n', 'input')" -> "('set', 'n', '[$n num]')"
+	"('set', 'n', '[$n num]')" -> "('outputexp', '[\"Generating a list of the first \" $n str + \" primes...\" +]')"
+	"('outputexp', '[\"Generating a list of the first \" $n str + \" primes...\" +]')" -> "('set', 'i', '[2]')"
+	"('set', 'i', '[2]')" -> "('set', 'prime_list', '[0 \\]')"
+	"('set', 'prime_list', '[0 \\]')" -> "('mark', 'loop_start')"
+	"('mark', 'loop_start')" -> "('set', 'j', '[2]')"
+	"('set', 'j', '[2]')" -> "('mark', 'inner_loop_start')"
+	"('mark', 'inner_loop_start')" -> "('set', 'is_prime', '[true]')"
+	"('set', 'is_prime', '[true]')" -> "('if', '[$j $i 2 / >]', ('goto', 'inner_loop_end'))"
+	"('if', '[$j $i 2 / >]', ('goto', 'inner_loop_end'))" -> "('set', 'rem_zero', '[$i $j % 0 = !]')" [label=False]
+	"('set', 'rem_zero', '[$i $j % 0 = !]')" -> "('if', '[$rem_zero]', ('set', 'j', '[$j 1 +]'))"
+	"('if', '[$rem_zero]', ('set', 'j', '[$j 1 +]'))" -> "('if', '[$rem_zero !]', ('set', 'is_prime', '[false]'))"
+	"('if', '[$rem_zero !]', ('set', 'is_prime', '[false]'))" -> "('if', '[$rem_zero !]', ('goto', 'inner_loop_end'))"
+	"('if', '[$rem_zero !]', ('goto', 'inner_loop_end'))" -> "('goto', 'inner_loop_start')" [label=False]
+	"('mark', 'inner_loop_end')" -> "('if', '[$is_prime]', ('outputexp', '[\"Found prime.. \" $i str +]'))"
+	"('if', '[$is_prime]', ('outputexp', '[\"Found prime.. \" $i str +]'))" -> "('if', '[$is_prime]', ('set', 'prime_list', '[$prime_list $i ..]'))"
+	"('if', '[$is_prime]', ('set', 'prime_list', '[$prime_list $i ..]'))" -> "('if', '[$prime_list # $n =]', ('goto', 'loop_end'))"
+	"('if', '[$prime_list # $n =]', ('goto', 'loop_end'))" -> "('set', 'i', '[$i 1 +]')" [label=False]
+	"('set', 'i', '[$i 1 +]')" -> "('goto', 'loop_start')"
+	"('mark', 'loop_end')" -> "('outputexp', '[\"First \" $n str \" primes.. \" $prime_list str + + +]')"
+}

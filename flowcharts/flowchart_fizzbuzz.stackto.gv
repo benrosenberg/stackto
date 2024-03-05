@@ -1,0 +1,56 @@
+digraph "flowchart of .\\tests\\fizzbuzz.stackto" {
+	label="flowchart of .\\tests\\fizzbuzz.stackto"
+	labelloc=t
+	fontsize=28
+	fontname=Arial
+	node [fontname=Consolas]
+	edge [fontname=Consolas]
+	node [shape=tab]
+	"('mark', 'loop_start')"
+	node [shape=oval]
+	node [shape=tab]
+	"('mark', 'loop_end')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'n', '[1]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'max', '[100]')"
+	node [shape=oval]
+	node [shape=box3d]
+	"('set', 'this_output', '[\"\"]')"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$n 3 % 0 =]', ('set', 'this_output', '[$this_output \"Fizz\" +]'))"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$n 5 % 0 =]', ('set', 'this_output', '[$this_output \"Buzz\" +]'))"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$this_output \"\" =]', ('set', 'this_output', '[$this_output $n str +]'))"
+	node [shape=oval]
+	node [shape=note]
+	"('outputvar', 'this_output')"
+	node [shape=oval]
+	node [shape=component]
+	"('if', '[$n $max =]', ('goto', 'loop_end'))"
+	node [shape=oval]
+	"('if', '[$n $max =]', ('goto', 'loop_end'))" -> "('mark', 'loop_end')" [label=True]
+	node [shape=box3d]
+	"('set', 'n', '[$n 1 +]')"
+	node [shape=oval]
+	node [shape=oval]
+	"('goto', 'loop_start')"
+	"('goto', 'loop_start')" -> "('mark', 'loop_start')"
+	node [shape=oval]
+	"('set', 'n', '[1]')" -> "('set', 'max', '[100]')"
+	"('set', 'max', '[100]')" -> "('mark', 'loop_start')"
+	"('mark', 'loop_start')" -> "('set', 'this_output', '[\"\"]')"
+	"('set', 'this_output', '[\"\"]')" -> "('if', '[$n 3 % 0 =]', ('set', 'this_output', '[$this_output \"Fizz\" +]'))"
+	"('if', '[$n 3 % 0 =]', ('set', 'this_output', '[$this_output \"Fizz\" +]'))" -> "('if', '[$n 5 % 0 =]', ('set', 'this_output', '[$this_output \"Buzz\" +]'))"
+	"('if', '[$n 5 % 0 =]', ('set', 'this_output', '[$this_output \"Buzz\" +]'))" -> "('if', '[$this_output \"\" =]', ('set', 'this_output', '[$this_output $n str +]'))"
+	"('if', '[$this_output \"\" =]', ('set', 'this_output', '[$this_output $n str +]'))" -> "('outputvar', 'this_output')"
+	"('outputvar', 'this_output')" -> "('if', '[$n $max =]', ('goto', 'loop_end'))"
+	"('if', '[$n $max =]', ('goto', 'loop_end'))" -> "('set', 'n', '[$n 1 +]')" [label=False]
+	"('set', 'n', '[$n 1 +]')" -> "('goto', 'loop_start')"
+}
