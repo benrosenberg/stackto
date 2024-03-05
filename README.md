@@ -101,10 +101,6 @@ Flowcharts are made with [generate_flowchart.py](generate_flowchart.py) using th
 
 Note that due to a [graphviz limitation](https://github.com/xflr6/graphviz/issues/53), colon characters (`:`) are displayed as two periods (`..`) in the generated flowcharts.
 
-## Grammar
-
-StackTo's grammar is pretty simple. See [grammar.md](grammar.md).
-
 ## Usage
 
 ### Requirements
@@ -124,7 +120,15 @@ To run a StackTo program, put `interpreter.py` in your current directory and run
 ```bash
 python interpreter.py /path/to/file.stackto
 ```
+
+## Grammar
+
+StackTo's grammar is pretty simple. See [grammar.md](grammar.md).
  
+## Evaluation pseudocode
+
+Evaluating a StackTo program is also rather simple. See [evaluation_pseudocode.md](evaluation_pseudocode.md) for a general idea of how programs are evaluated, statement by statement.
+
 ## TODO list
 
 The initial version of this language was put together in a weekend, so there are lots of things that remain to be done.
