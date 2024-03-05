@@ -1,6 +1,7 @@
 import sys
 import re
 import random
+import argparse
 from itertools import product
 
 DATA_TYPES = {'bool', 'number', 'string', 'list'}
@@ -606,11 +607,11 @@ def parse_content(filecontent, include_comments=False):
     return parse_statements(filecontent.split(';'), include_comments=include_comments)
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print('please provide a filename to run')
-        sys.exit(1)
-    # print('running', sys.argv[1])
-    with open(sys.argv[1], 'r') as f:
+    parser = argparse.ArgumentParser(description='Interpret a StackTo program.')
+    parser.add_argument('infile', help='StackTo file to read from')
+    args = parser.parse_args()
+    infilename = getattr(args, 'infile')
+    with open(infilename, 'r') as f:
         filecontent = f.read()
     statements = parse_content(filecontent)
     # print('statements:', statements)

@@ -1,6 +1,7 @@
 import sys
 import os
 from itertools import tee
+import argparse
 import graphviz
 from interpreter import parse_content
 
@@ -14,15 +15,20 @@ def node_str(statement):
     return str(statement).replace(':', '..')
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print('please provide a filename to run')
-        sys.exit(1)
-    print('creating flowchart out of', sys.argv[1])
-    with open(sys.argv[1], 'r') as f:
+    parser = argparse.ArgumentParser(description='Generate a flowchart PNG for a StackTo program using Graphviz.')
+    parser.add_argument('infile', help='StackTo file to read from')
+    parser.add_argument('-o', '--outfile', help='Graphviz/PNG filename to write to', default=[None], required=False, nargs=1)
+    args = parser.parse_args()
+    infilename = getattr(args, 'infile')
+    outfilename = getattr(args, 'outfile')[0]
+    print('creating flowchart out of', infilename)
+    with open(infilename, 'r') as f:
         filecontent = f.read()
+    if outfilename is None:
+        outfilename = 'flowchart_{}.gv'.format(sys.argv[1].split(os.path.sep)[-1])
     statements = parse_content(filecontent)
 
-    print('statements:', statements)
+    # print('statements:', statements)
 
     use_indices = False
     if not len(set(statements)) == len(statements):
@@ -32,7 +38,8 @@ if __name__ == '__main__':
 
     DEFAULT = 'oval'
 
-    g = graphviz.Digraph('flowchart of ' + sys.argv[1].replace('\\', '\\\\'))
+    infilename = infilename.replace('\\', '\\\\')
+    g = graphviz.Digraph('flowchart of ' + infilename)
 
     g.attr(label=g.name)
     g.attr(labelloc='t')
@@ -108,7 +115,6 @@ if __name__ == '__main__':
         else:
             g.edge(node_str(a), node_str(b))
 
-    outfilename = 'flowchart_{}.gv'.format(sys.argv[1].split(os.path.sep)[-1])
     g.render(outfilename, format='png', engine='dot')
 
-    print('done')
+    print('generated', outfilename, 'and', outfilename + '.png')

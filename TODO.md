@@ -16,12 +16,12 @@
  - [x] (done) brainstorm file extension - ".stackto"
  - [x] (done) syntax highlighter (/formatter)
  - [x] (done) revised bnf
+ - [x] use argparse for impl.py and generate_flowchart.py
  - [ ] add special "input" operator to autocast user input to number
  - [ ] add list "contains" binary operator
  - [ ] add string formatting with %s or similar
  - [ ] fix code formatter to allow empty lines for readability
  - [ ] academic writeup of syntax, semantics
- - [ ] use argparse for impl.py and generate_flowchart.py
  - [ ] display code output underneath highlighted syntax output from syntax highlighter (capture stdout)
  - [ ] figure out something better than COLON to replace colon with port issue for graphviz
  - [ ] actual jupyter-like notebook support
