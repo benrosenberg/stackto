@@ -49,5 +49,5 @@
 
  ## Rejected ideas
 
- - [ ] {rejected) fix comment difficulty by removing comments BEFORE splitting on semicolons (duh!)
- - [ ] {rejected) add multiline comments - brainstorm a delimiter
+ - [ ] (rejected) fix comment difficulty by removing comments before splitting on semicolons
+ - [ ] (rejected) add multiline comments - brainstorm a delimiter
