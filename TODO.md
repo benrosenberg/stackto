@@ -1,5 +1,7 @@
 # To-do list for StackTo
 
+In no particular order.
+
  - [x] (done) spaces in strings
  - [x] (done) expressions directly in output
  - [x] (done) negative numbers
@@ -17,6 +19,7 @@
  - [x] (done) syntax highlighter (/formatter)
  - [x] (done) revised bnf
  - [x] use argparse for impl.py and generate_flowchart.py
+ - [ ] port syntax highlighter to js so that it can be run on a website
  - [ ] add special "input" operator to autocast user input to number
  - [ ] add list "contains" binary operator
  - [ ] add string formatting with %s or similar
@@ -40,14 +43,16 @@
  - [ ] cli repl
  - [ ] csv lib
  - [ ] function namespaces (e.g., List.nth, List.splat...) (?)
+ - [ ] allow definition of custom stack operators
  - [ ] js interpreter and online repl
  - [ ] port to c or llvm or java
  - [ ] regex lib
  - [ ] web/requests library
  - [ ] documentation website
+ - [ ] language logo
  - [ ] naming convention for markers based on function
 
- ## Rejected ideas
+## Rejected ideas
 
  - [ ] (rejected) fix comment difficulty by removing comments before splitting on semicolons
  - [ ] (rejected) add multiline comments - brainstorm a delimiter
