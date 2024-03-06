@@ -19,6 +19,10 @@ function process_statements(statements) is
 		if statement is OUTPUT(varname) then
 			output vars[varname]
 		endif
+		if statement is OUTPUT(expression) then
+			value := parse expression
+			output value
+		endif
 		if statement is MARK(marker) then
 			continue
 		endif
@@ -38,6 +42,13 @@ function process_statements(statements) is
 				endif
 				if ifbody is GOTO(marker) then
 					index := markers[marker]
+				endif
+				if statement is OUTPUT(varname) then
+					output vars[varname]
+				endif
+				if statement is OUTPUT(expression) then
+					value := parse expression
+					output value
 				endif
 			endif
 		endif
