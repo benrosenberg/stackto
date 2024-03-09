@@ -1,0 +1,8 @@
+# inputnum casts input to num automatically
+set $n inputnum;
+mark loop_start;
+if [$n 0 <=] then goto end;
+set $n [$n 1 -];
+output $n;
+goto loop_start;
+mark end;

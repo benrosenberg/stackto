@@ -136,7 +136,7 @@ def process_binop(token, stack):
     if token == 'nth':
         n = int(arg_b)
         if n != arg_b: raise ValueError('binop: non-integer argument "%s" passed to binop "nth"' % arg_b)
-        elif n >= len(arg_a): raise ValueError('binop: n "%s" greater than list length (%s) in binop "nth"' % (n, len(arg_a)))
+        elif n >= len(arg_a): raise ValueError('binop: n "%s" greater than max list index (%s) in binop "nth"' % (n, len(arg_a)-1))
         elif n < 0:
             raise ValueError('binop: %s cannot process negative list index "%s"' % (token, n))                       
         else:                       return stack + [arg_a[n]]
@@ -145,7 +145,9 @@ def process_binop(token, stack):
     if token == 'split':            return stack + [('list', [('string', element) for element in arg_a.split(arg_b)])]
     raise SyntaxError('binop: %s cannot be processed as a binop' % token)
 
-TRINOPS = {}
+TRINOPS = {
+    'setnth' : {p for p in product(['list'], ['number'], DATA_TYPES)}
+}
 
 def process_trinop(token, stack):
     if len(stack) < 3:
@@ -156,6 +158,15 @@ def process_trinop(token, stack):
     typesig = (argtype_a, argtype_b, argtype_c)
     if not typesig in TRINOPS[token]:
         raise SyntaxError('trinop: %s cannot process type "%s"' % (token, typesig))
+    if token == 'setnth':
+        n = int(arg_b)
+        if n != arg_b: raise ValueError('trinop: non-integer argument "%s" passed to trinop "setnth"' % arg_b)
+        elif n >= len(arg_a): raise ValueError('trinop: n "%s" greater than max list index (%s) in trinop "setnth"' % (n, len(arg_a)-1))
+        elif n < 0:
+            raise ValueError('trinop: %s cannot process negative list index "%s"' % (token, n))                       
+        else:
+            arg_a[n] = (argtype_c, arg_c)
+            return stack + [(argtype_a, arg_a)]
     raise SyntaxError('trinop: %s cannot be processed as a trinop' % token)
 
 NOPS = { '\\', 'dropn', 'top', 'topn', 'rand' }
@@ -328,6 +339,7 @@ def tokenize_exp(exp):
 
 def check_exp(exp):
     if exp.strip() == 'input': return 'input' # just get user input
+    if exp.strip() == 'inputnum': return 'inputnum' # get user input and convert to number
     # make sure exp is formatted correctly and all terms are syntactically valid
     exp = exp.strip()
     assert exp[0] == '[' and exp[-1] == ']', 'check exp: missing delimiters "[" and/or "]" (%s)' % exp
@@ -343,6 +355,11 @@ def check_exp(exp):
 
 def parse_exp(exp, variables):
     if exp.strip() == 'input': return ('string', input()) # just get user input
+    if exp.strip() == 'inputnum': # get user input and convert to number
+        user_input = input()
+        if is_number(user_input):
+            return ('number', float(user_input))
+        raise ValueError('inputnum: expected numerical user input, got ' + user_input)
     # parse rpn expressions given current variable list
     exp = exp.strip()
     assert exp[0] == '[' and exp[-1] == ']', 'exp: missing delimiters "[" and/or "]" (%s)' % exp
@@ -484,6 +501,7 @@ def parse_statements(statement_strings, include_comments=False):
             continue
         if parsed == 'empty':
             if statement_index+1 == len(statement_strings):
+                # print('statements', statements)
                 return statements
             print('warning: empty statement detected between statements (index {}: {}) and (index {}: {})'.format(
                 statement_index-1, repr(statement_strings[statement_index-1]),
@@ -492,6 +510,7 @@ def parse_statements(statement_strings, include_comments=False):
         else:
             statements.append(parsed)
         statement_index += 1
+    # print('statements', statements)
     return statements
 
 def process_statements(parsed_statements):
@@ -614,7 +633,7 @@ if __name__ == '__main__':
     with open(infilename, 'r') as f:
         filecontent = f.read()
     statements = parse_content(filecontent)
-    # print('statements:', statements)
+    print('statements:', statements)
 
     process_statements(statements)
 

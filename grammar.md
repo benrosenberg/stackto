@@ -13,7 +13,7 @@ if ::= IF expression THEN ifbody
 
 ifbody ::= goto | assignment | output
 
-expression ::= LBRACKET explist RBRACKET
+expression ::= LBRACKET explist RBRACKET | inputkeyword
 
 explist ::= atom atom'
 
@@ -23,7 +23,7 @@ atom' ::= atom | EMPTY
 
 string ::= doublequotedstring | singlequotedstring
 
-op ::= unop | binop | nop
+op ::= unop | binop | trinop | nop
 
 marker ::= MARK markername
 
@@ -35,9 +35,13 @@ output ::= OUTPUT variablename
 
 comment ::= /#.*/
 
+inputkeyword ::= 'input' | 'inputnum'
+
 unop ::= '#' | '~' | '!' | '?' | 'num' | 'splat' | 'dup' | 'drop' | 'str' | 'round' | 'sum' | 'prod' | 'type'
 
 binop ::= '<' | '>' | '<=' | '>=' | '=' | '==' | '<>' | '!=' | '&' | '^' | '|' | '+' | '-' | '*' | '/' | '//' | '%' | '@' | ':' | 'swap' | 'nth' | 'min' | 'max' | 'split'
+
+trinop ::= 'setnth'
 
 nop ::= '\' | 'dropn' | 'top' | 'topn' | 'rand'
 
